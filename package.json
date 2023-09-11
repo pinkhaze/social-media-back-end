@@ -1,0 +1,23 @@
+{
+  "name": "social-media-back-end",
+  "version": "1.0.0",
+  "description": "Social Media Back-End",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinkhaze/social-media-back-end.git"
+  },
+  "author": "Monika Racia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinkhaze/social-media-back-end/issues"
+  },
+  "homepage": "https://github.com/pinkhaze/social-media-back-end#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0"
+  }
+}
