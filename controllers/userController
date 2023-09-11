@@ -1,0 +1,31 @@
+const { ObjectId } = require('mongoose').Types;
+const { User } = require('../models');
+
+
+module.exports = {
+    // Get all users
+    async getUsers(req, res) {
+        try {
+
+        } catch (err) {
+            
+        }
+    },
+    // Get a single user
+    async getSingleUser(req, res) {
+        try {
+
+        } catch (err) {
+            
+        }
+    },
+
+    // Create a user
+    async createUser(req, res) {
+        try {
+
+        } catch (err) {
+            
+        }
+    }
+}
