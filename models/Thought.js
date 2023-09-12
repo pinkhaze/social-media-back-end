@@ -23,7 +23,7 @@ const thoughtSchema = new Schema(
   {
     toJSON: {
       virtuals: true,   // include virtuals with response
-      getters: true,    // include 
+      getters: true,  
     },
     id: false
   }
