@@ -39,13 +39,34 @@ const userController = {
     async updateUser(req, res) {
         try {
             const userData = await User.findOneAndUpdate(
-                { _id: req.params.id },
-            )
+                { _id: req.params.userId },
+                { $set: req.body },
+                { runValidator: true, new: true }
+            );
 
+            if (!userData) {
+                return res.status(404).json({ message: 'No video with this id!' });
+            }
+
+            res.json(userData);
         } catch (err) {
-
+            res.status(500).json(err);
         }
-    }
+    },
+
+    async deleteUser(req, res) {
+        try {
+          const userData = await User.findOneAndRemove({ _id: req.params.userId });
+    
+          if (!userData) {
+            return res.status(404).json({ message: 'No user with this id!' });
+          }
+    
+          res.json({ message: 'User successfully deleted!' });
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      },
 }
 
 module.exports = userController;
