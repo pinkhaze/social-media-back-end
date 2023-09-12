@@ -45,7 +45,7 @@ const userController = {
             );
 
             if (!userData) {
-                return res.status(404).json({ message: 'No video with this id!' });
+                return res.status(404).json({ message: 'No user with this id!' });
             }
 
             res.json(userData);
