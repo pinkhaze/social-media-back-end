@@ -1,6 +1,31 @@
 const { Schema, model } = require('mongoose');
 
-// Schema to create Thought model
+// define shape for reaction subdocument
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId,
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: timestamp => new Date(timestamp).toISOString(),
+    },
+  }
+)
+
+// schema to create Thought model
+// defines shape for parent document
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -18,7 +43,9 @@ const thoughtSchema = new Schema(
         type: String,
         required: true,
     },
-    //reactions: [reactionSchema],
+
+    // include an array that holds all the reactions' information
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
@@ -30,12 +57,12 @@ const thoughtSchema = new Schema(
 );
 
 // Virtual property that gets the length of the user's 'friends' array field
-// thoughtSchema
-//   .virtual('reactionCount')
-//   // Getter
-//   .get(function() {
-//     return this.reactions.length;
-//   });
+thoughtSchema
+  .virtual('reactionCount')
+  // Getter
+  .get(function() {
+    return this.reactions.length;
+  });
 
 // Initialize the Thought model
 const Thought = model('thought', thoughtSchema);
