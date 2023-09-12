@@ -1,6 +1,8 @@
 const { User, Thought } = require('../models');
 
+// /api/thoughts
 module.exports = {
+    // GET to get all thoughts
     async getThoughts(req, res) {
         try {
             const thoughtData = await Thought.find()
@@ -10,7 +12,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-
+    // GET to get a single thought by its _id
     async getSingleThought(req, res) {
         try {
             const thoughtData = await Thought.findOne({ _id: req.params.thoughtId })
@@ -25,14 +27,14 @@ module.exports = {
             res.status(500).json(err);
         } 
     },
-
+    // POST to create a new thought 
     async createThought(req, res) {
         try {
             const thoughtData = await Thought.create(req.body);
-
+            // add thought to associated user 
             const userData = await User.findOneAndUpdate(
                 { _id: req.body.userId },
-                { $push: { thoughts: Thought._id } },
+                { $push: { thoughts: thoughtData._id } },
                 { new: true },
             )
 
@@ -44,7 +46,7 @@ module.exports = {
             res.status(500).json(err);
         } 
     },
-
+    // PUT to update a thought by its _id
     async updateThought(req, res) {
         try {
             const thoughtData = await Thought.findOneAndUpdate(
@@ -62,5 +64,19 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+
+    async deleteThought(req, res) {
+        try {
+          const thoughtData = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
+    
+          if (!thoughtData) {
+            return res.status(404).json({ message: 'No user with this id!' });
+          }
+    
+          res.json({ message: 'User successfully deleted!' });
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      },
 
 }
