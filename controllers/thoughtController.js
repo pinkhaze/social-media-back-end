@@ -2,7 +2,7 @@ const { User, Thought } = require('../models');
 
 // /api/thoughts
 module.exports = {
-    // GET to get all thoughts
+    // GET to find all thoughts
     async getThoughts(req, res) {
         try {
             const thoughtData = await Thought.find()
@@ -12,7 +12,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-    // GET to get a single thought by its _id
+    // GET to find a single thought by its _id
     async getSingleThought(req, res) {
         try {
             const thoughtData = await Thought.findOne({ _id: req.params.thoughtId })
@@ -64,7 +64,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-
+    // DELETE to remove a thought by its _id
     async deleteThought(req, res) {
         try {
           const thoughtData = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
