@@ -7,7 +7,7 @@ const userController = {
             const userData = await User.find({})
               .select('-__v');  // exclude version key
             res.json(userData);
-        } catch (err) {
+        }   catch (err) {
             res.status(500).json(err);
         }
     },
@@ -23,7 +23,7 @@ const userController = {
             res.json(userData);
         } catch (err) {
             res.status(500).json(err);
-        } 
+        }
     },
     // POST to create a new user
     async createUser(req, res) {
@@ -69,7 +69,42 @@ const userController = {
         } catch (err) {
           res.status(500).json(err);
         }
-      },
+    },
+      
+    async addFriend(req, res) {
+        try {
+            const userData = await User.findOneAndUpdate(
+                { _id: req.params.userId },
+                { $push: { friends: req.params.friendId }},
+                { runValidator: true, new: true }
+            );
+            
+            if (!userData) {
+                return res.status(404).json({ message: 'Found no user with that ID' });
+            }
+            
+            res.json('Added a friend');
+        }   catch (err) {
+            res.status(500).json(err);
+        }
+    },
+
+      async deleteFriend(req, res) {
+        try {
+            const userData = await User.findOneAndUpdate(
+                { _id: req.params.userId},
+                { $pull: { friends: req.params.friendId }},
+                { runValidator: true, new: true }
+            );
+
+            if (!userData) {
+                return res.status(404).json({ message: 'Found no user with that ID '});
+            }
+            res.json('Deleted a friend')
+        }   catch (error) {
+            res.status(500).json(err);
+        }
+      }
 }
 
 module.exports = userController;
