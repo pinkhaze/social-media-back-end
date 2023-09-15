@@ -60,8 +60,7 @@
   [Video Walk-through](https://drive.google.com/file/d/1abiVThM2o9MUkr-O42iWScVEhLtummAh/view?usp=drive_link)
 
 
-  [Social Media Back End Walk-Through.webm](https://github.com/pinkhaze/readme-generator/assets/55771228/c0ad004a-9822-4847-8b61-e5c049d81783)
-
+  [Social Media Back End Walk-Through.webm](https://github.com/pinkhaze/social-media-back-end/assets/55771228/991e4c13-8340-4096-845d-a6d79546ff66)
 
   ## Credits
 
