@@ -10,7 +10,6 @@
  * opening API GET routes in Insomnia for users and thoughts display data for each of these routes in a formatted JSON
  * testing API POST, PUT, and DELETE routes in Insomnia successfully creates, updates, and deletes users and thoughts in the database
  * testing API POST and DELETE routes in Insomnia successfully creates and deletes reactions to thoughts and adds and removes friends to a user’s friend list
-```
 
   ## Table of Contents
   - [Installation](#installation)
