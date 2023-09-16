@@ -4,18 +4,13 @@
 
   ## Description
 
-  The purpose of this project is to create a command-line application that dynamically generates a README.md file from user input using the Inquirer package.
-  
-  In order to meet requirements, the README Generator App should have the following capabilities:
+  This project uses `Express.js`, `Mongoose` and the `Javascript date library` to build an API for a social network web application where users can share their thoughts, react to friends' thoughts and create a friend list. The app has the following capabilities:
 
- * prompt the user for information about the user's application repository via the command-line
- * generate a high-quality, professional README.md that contains the following:
-      - title of the user's project
-      - Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions sections
- * add a badge for the user selected license at the top of the README
- * License section contains a notice that explains which license the application is covered under
- * Questions section contains a link to the user's GitHub profile and email
- * clicking on the links in the Table of Contents takes the user to the corresponding section of the README
+ * entering the command to invoke the application starts the server and syncs the Mongoose models to the MongoDB database
+ * opening API GET routes in Insomnia for users and thoughts display data for each of these routes in a formatted JSON
+ * testing API POST, PUT, and DELETE routes in Insomnia successfully creates, updates, and deletes users and thoughts in the database
+ * testing API POST and DELETE routes in Insomnia successfully creates and deletes reactions to thoughts and adds and removes friends to a user’s friend list
+```
 
   ## Table of Contents
   - [Installation](#installation)
@@ -53,12 +48,11 @@
 
  6. Type the following command to start the application:
 
-        node server.js
+  ```bash
+      node server.js
+  ```
 
   ## Usage
-
-  [Video Walk-through](https://drive.google.com/file/d/1abiVThM2o9MUkr-O42iWScVEhLtummAh/view?usp=drive_link)
-
 
   [Social Media Back End Walk-Through.webm](https://github.com/pinkhaze/social-media-back-end/assets/55771228/991e4c13-8340-4096-845d-a6d79546ff66)
 
